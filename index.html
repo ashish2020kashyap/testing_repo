@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+ <head></head>
+ <body>
+  Date : <input type="" id="in"></br>
+  <button onclick="detail()">Details</button>
+  <button onclick="nextdate()">Next Date</button>
+  <button onclick="previousdate()">Previous Date</button>
+ </body>
+ <script>
+ var arr=[];
+ var months=["January","February","March","April","May","June","July","August","September","October","November",
+             "December"];
+ var weeks=["Sunday","Monday","Tuesday","Wednesday","Thusday","Friday","Saturday"];
+
+ function detail(){
+  var input=document.getElementById("in").value;
+  arr=input.split(" ");
+  var mydate=new Date(arr);
+  console.log(mydate);
+
+  var dayIndex=mydate.getDay();
+  var day=weeks[dayIndex];
+  var out=document.createElement("div");
+  out.innerHTML="Day : "+day;
+  document.body.appendChild(out);
+
+  var date=mydate.getDate();
+  var out=document.createElement("div");
+  out.innerHTML="Date : "+date;
+  document.body.appendChild(out);
+
+  var monthIndex=mydate.getMonth();
+  var month=months[monthIndex];
+  var out=document.createElement("div");
+  out.innerHTML="Month : "+month;
+  document.body.appendChild(out);
+
+  var year=mydate.getFullYear();
+  var out=document.createElement("div");
+  out.innerHTML="Year : "+year;
+  document.body.appendChild(out);
+}
+function nextdate(){
+  var input=document.getElementById("in");
+  var tomorrow =new Date();
+  tomorrow.setDate(tomorrow.getDate()+1);
+  console.log(tomorrow);
+
+  var date=tomorrow.getDate();
+
+  var monthIndex=tomorrow.getMonth();
+  var month=months[monthIndex];
+
+  var year=tomorrow.getFullYear();
+
+  input.value=date+" "+month+" "+year;
+  console.log(input);
+}
+
+function previousdate(){
+  var input=document.getElementById("in");
+  var previous =new Date();
+  previous.setDate(previous.getDate()-1);
+  console.log(previous);
+
+  var date=previous.getDate();
+
+  var monthIndex=previous.getMonth();
+  var month=months[monthIndex];
+
+  var year=previous.getFullYear();
+
+  input.value=date+" "+month+" "+year;
+  console.log(input);
+}
+ </script>
+</html>
